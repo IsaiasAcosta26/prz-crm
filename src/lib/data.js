@@ -48,3 +48,24 @@ export function deriveKPIs(prospects) {
     scorePromedio: total ? (scores.reduce((a, b) => a + b, 0) / total).toFixed(1) : '0',
   }
 }
+
+// Convierte un prospecto del agente de Jose al formato exacto de la base
+export function mapProspect(raw, org_id) {
+  const scoreNum = parseInt(String(raw.score ?? raw.score_audit ?? '0'), 10) || 0
+  return {
+    org_id,
+    date: raw.date || new Date().toISOString().slice(0, 10),
+    secteur: raw.secteur || '',
+    zone: raw.zone || '',
+    nom: raw.nom || 'Sin nombre',
+    telephone: raw.telephone || '',
+    site_web: raw.site_web || '',
+    note_google: raw.note_google || '',
+    score_audit: Math.max(0, Math.min(10, scoreNum)),
+    manques: raw.manques || '',
+    instagram: raw.instagram || '',
+    email: raw.email || '',
+    proposition_prz: raw.proposition_prz || raw.proposition || '',
+    statut: raw.statut || 'A contacter',
+  }
+}

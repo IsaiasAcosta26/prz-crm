@@ -5,6 +5,7 @@ import ProspectsTable from './components/ProspectsTable'
 import Kanban from './components/Kanban'
 import ProspectDrawer from './components/ProspectDrawer'
 import Empresas from './components/Empresas'
+import Buscar from './components/Buscar'
 
 // ===================== Puerta de entrada =====================
 export default function App() {
@@ -106,6 +107,7 @@ function Workspace({ session }) {
     tabla: <ProspectsTable prospects={prospects} onEdit={updateProspect} onOpen={setSelected} />,
     kanban: <Kanban prospects={prospects} onEdit={updateProspect} onOpen={setSelected} />,
     empresas: <Empresas prospects={prospects} />,
+    buscar: <Buscar prospects={prospects} onDataChanged={load} />,
   }
 
   return (
@@ -116,6 +118,9 @@ function Workspace({ session }) {
           <button className={view === 'dashboard' ? 'tab active' : 'tab'} onClick={() => setView('dashboard')}>Panel</button>
           <button className={view === 'tabla' ? 'tab active' : 'tab'} onClick={() => setView('tabla')}>Prospectos</button>
           <button className={view === 'kanban' ? 'tab active' : 'tab'} onClick={() => setView('kanban')}>Kanban</button>
+          {profile?.role === 'admin' && (
+            <button className={view === 'buscar' ? 'tab active' : 'tab'} onClick={() => setView('buscar')}>Buscar</button>
+          )}
           {profile?.role === 'admin' && (
             <button className={view === 'empresas' ? 'tab active' : 'tab'} onClick={() => setView('empresas')}>Empresas</button>
           )}

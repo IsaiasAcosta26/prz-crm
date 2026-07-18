@@ -144,3 +144,14 @@ body { background: var(--bg); color: var(--text); }
 .create-row { display: flex; gap: 14px; }
 .orgid { font-family: ui-monospace, monospace; font-size: 12px; color: var(--muted);
   background: var(--panel-2); padding: 3px 7px; border-radius: 6px; }
+
+  /* ---------- Buscar ---------- */
+.check { display: flex; align-items: flex-start; gap: 10px; margin-top: 18px; font-size: 14px; color: #cfcfd4; cursor: pointer; }
+.check input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--accent); flex: none; }
+.loading-box { display: flex; align-items: center; gap: 16px; margin-top: 18px; padding: 16px;
+  background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; }
+.spinner { width: 26px; height: 26px; border: 3px solid var(--border); border-top-color: var(--accent);
+  border-radius: 50%; animation: spin .8s linear infinite; flex: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.review-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 14px; }
+.dup-tag { background: #F59E0B22; color: #F59E0B; border: 1px solid #F59E0B; border-radius: 20px; padding: 2px 10px; font-size: 11px; font-weight: 600; }
