@@ -6,6 +6,7 @@ import Kanban from './components/Kanban'
 import ProspectDrawer from './components/ProspectDrawer'
 import Empresas from './components/Empresas'
 import Buscar from './components/Buscar'
+import Usuarios from './components/Usuarios'
 
 // ===================== Puerta de entrada =====================
 export default function App() {
@@ -108,6 +109,7 @@ function Workspace({ session }) {
     kanban: <Kanban prospects={prospects} onEdit={updateProspect} onOpen={setSelected} />,
     empresas: <Empresas prospects={prospects} />,
     buscar: <Buscar prospects={prospects} onDataChanged={load} />,
+    usuarios: <Usuarios />,
   }
 
   return (
@@ -123,6 +125,9 @@ function Workspace({ session }) {
           )}
           {profile?.role === 'admin' && (
             <button className={view === 'empresas' ? 'tab active' : 'tab'} onClick={() => setView('empresas')}>Empresas</button>
+          )}
+          {profile?.role === 'admin' && (
+            <button className={view === 'usuarios' ? 'tab active' : 'tab'} onClick={() => setView('usuarios')}>Usuarios</button>
           )}
         </nav>
         <div className="user">
